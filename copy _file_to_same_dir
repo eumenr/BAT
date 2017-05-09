@@ -1,0 +1,12 @@
+@echo ON
+@title Backup ODB
+@REM 改成黑底(0)淡綠字(A)
+@color 0A
+@echo off
+for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set "dt=%%a"
+set "YY=%dt:~2,2%" & set "YYYY=%dt:~0,4%" & set "MM=%dt:~4,2%" & set "DD=%dt:~6,2%"
+set "HH=%dt:~8,2%" & set "Min=%dt:~10,2%" & set "Sec=%dt:~12,2%"
+set "fullstamp=%YYYY%-%MM%-%DD%_%HH%%Min%%Sec%"
+
+copy ".\檔案名稱.odb" ".\檔案名稱 - %fullstamp%.odb" /Y
+//@pause
